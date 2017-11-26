@@ -8,6 +8,17 @@
         "newhouse": "house"
     },
 
+    "Server":
+    {
+        "isDev": true
+    },
+
+    "Database":
+    {
+      "U": "root",
+      "P": ""
+    },
+
     "Logger":
     {
         "Debug": true,
