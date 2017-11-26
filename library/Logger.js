@@ -19,7 +19,7 @@ function debug(message, tag)
     if (Config.Logger.Debug == false) return;
 
     message = util.format(message);
-    write(`${getTimeString()} -${((tag) ? " [DEBUG]" : "")} ${message}`.gray)
+    write(`${getTimeString()} -${((tag) ? " [DEBUG]" : "")} ${message}`.gray.bold)
 };
 
 function info(message)
