@@ -6,6 +6,12 @@
         "main": "battleon",
         "newuser": "newbie",
         "newhouse": "house"
+    },
+
+    "Logger":
+    {
+        "Debug": true,
+        "Prompt": ">"
     }
 
 }
