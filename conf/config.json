@@ -1,0 +1,11 @@
+{
+    "Version": "0.0.1",
+
+    "Instances":
+    {
+        "main": "battleon",
+        "newuser": "newbie",
+        "newhouse": "house"
+    }
+
+}
