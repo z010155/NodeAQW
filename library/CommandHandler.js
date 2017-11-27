@@ -2,6 +2,13 @@ const columnify = require('columnify');
 
 var List =
 {
+    'clear': {
+        desc: 'Clears the command line of all it\'s lines.',
+        run: x => {
+            'use strict';
+            process.stdout.write('\x1Bc');
+        }
+    },
     "?":
     {
         alias: "help"
