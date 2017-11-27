@@ -1,6 +1,7 @@
 const os = require('os');
 const gameloop = require('node-gameloop');
 const CommandHandler = require('../library/CommandHandler');
+const Instance = require('./constructs/Instance');
 
 class MainServer
 {
@@ -25,34 +26,29 @@ class MainServer
         // Generate Handlers
         Logger.debug(`Creating handlers...`);
         this.generateHandlers();
-
-        // Generate Instances
-        Logger.debug(`Creating instances...`);
-        this.generateInstances();
     }
 
     generateInstances()
     {
       var max = Config.Instances.max;
-      var count = 4000001;
-      for (var i = 0; i < max; i++)
+      var maps = Config.Instances.maps;
+      var count = 0;
+
+      for (var i = 0; i < maps.length; i++)
       {
-        var main = `${Config.Instances.main}-${count+i}`;
-        count++;
-        Logger.debug(`MainWorld Instance doId: ${main}`);
+        var mapObject = maps[i];
+        var mapName = mapObject.id;
+        var mapType = mapObject.type;
 
-        var newUser = `${Config.Instances.newuser}-${count+i}`;
-        count++;
-        Logger.debug(`NewUser Instance doId: ${newUser}`);
+        for (var j = 0; j < max; j++)
+        {
+          var id = `${count+i}`;
+          count++;
 
-        var newHouse = `${Config.Instances.newhouse}-${count+i}`;
-        count++;
-        Logger.debug(`NewHouse Instance doId: ${newHouse}`);
-
-        // actually create and set the distributed objects into their respective instances
-
+          this[`${mapName}-${mapType}-${id}`] = new Instance(id, mapName, 'map', mapType, this.mysql)
+          // TODO: Add dynamic instance types, currently hardset to maps
+        }
       }
-
     }
 
     generateHandlers()
@@ -122,6 +118,10 @@ class MainServer
             }
         );
         */
+
+        // Generate Instances
+        Logger.debug(`Creating instances...`);
+        this.generateInstances();
     }
 
     sendAnnouncement(message)

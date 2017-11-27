@@ -3,9 +3,11 @@
 
     "Instances":
     {
-        "main": "battleon",
-        "newuser": "newbie",
-        "newhouse": "house",
+        "maps": [
+          {"id": "battleon", "type": "Main"},
+          {"id": "newbie", "type": "Landing"},
+          {"id": "house", "type": "House"}
+        ],
         "max": 3
     },
 
